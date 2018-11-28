@@ -5,6 +5,7 @@ namespace MVCFriends
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Net.Http;
 
     public partial class Friend
     {
@@ -17,9 +18,8 @@ namespace MVCFriends
         [Required(ErrorMessage ="Firstname Required")]
         [StringLength(30)]
         public string FirstName { get; set; }
-
-        [StringLength(30, ErrorMessage ="Please enter a valid phone number")]
-        [DataType(DataType.PhoneNumber)]
+        
+        [RegularExpression("^[0-9]{11}", ErrorMessage ="Please enter a valid phone number")]
         public string TelNo { get; set; }
 
         [StringLength(30)]
